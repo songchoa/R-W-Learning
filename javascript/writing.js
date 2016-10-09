@@ -22,7 +22,7 @@ Controller : {
 
 //Called on load to creat objects
 run : function(){
-
+  var btn = document.getElementById("startGame").value = "Hello";
 },
 
 //formating to add to screen

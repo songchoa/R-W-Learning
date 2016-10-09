@@ -1,7 +1,7 @@
 <html>
 <head>
 	<title>Writing Program</title>
-	<script src = "./writing.js"></script>
+	<script src = "../javascript/writing.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/mainStyle.css">
 </head>
 
@@ -17,11 +17,13 @@
 	</div>
 
 <div id = "myWrite">
-
+	<canvas id = "myCanvas" width = "500" height = "400" style="margin: 5px; border:1px solid #000000;"></canvas>
 </div>
-<script type="text/javascript">
-document.getElementById("myWrite").innerHTML = Write.run();
 
-</script>
+<div>
+	<input id = "userInput" type = "textfield"></input>
+	<input id = "startGame" type = "button" value = "Start New Game" onclick = "Write.run()"></input>
+	<input id = "instructions" type = "button" value = "Instructions"></input>
+</div>
 </body>
 </html>
