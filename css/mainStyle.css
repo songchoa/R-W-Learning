@@ -1,5 +1,8 @@
 /* css for general purpose */
-
+body {
+    background-color: lightblue;
+    margin-left: 20px;
+}
 /* css for reading section */
 
 /* css for writing section */
