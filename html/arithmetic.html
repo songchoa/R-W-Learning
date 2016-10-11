@@ -3,6 +3,12 @@
 <head>
 	<title>Arithmetic</title>
 	<link rel="stylesheet" type="text/css" href="../css/mainStyle.css">
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+
+    </style>
 </head>
 <body>
    <div>
@@ -14,5 +20,42 @@
     		<li><a href="coding.html">Reading</a></li>
     	</ul>
 	</div>
+
+	<div class="row">
+		<div class="col-md-4">
+			<div class="well" style="text-align: center;color: gold;background-color: gold; border: 2px solid green">
+				3 + 9 = 
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			<div class="well" style="text-align: center;color: gold;background-color: gold; border: 2px solid green">
+				12
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			<div class="well" style="text-align: center;color: gold;background-color: gold; border: 2px solid green">
+				15
+			</div>
+		</div>
+	</div>
+
+	<script>
+		var select;
+
+		$(".well").click(function() {
+			//alert("clicked");
+			select = this;
+			$(this).css("color","green").delay(1000).fadeOut();
+
+		});
+
+
+// 		var explode = function(){
+//   alert("Boom!");
+// };
+// setTimeout(explode, 2000);
+	</script>
 </body>
 </html>
