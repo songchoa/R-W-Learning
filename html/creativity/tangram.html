@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Puzzle 1 Tangram</title>
+	
+</head>
+<body>
+
+<script src="../../javascript/pixi.min.js"></script>
+<script>
+var stage = new PIXI.Container(); 
+var renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight);
+renderer.backgroundColor = 0xcccccc;
+document.body.appendChild(renderer.view);
+
+//add listener for mouse event
+document.addEventListener('keydown', onKeyDown);
+document.addEventListener('keyup', onKeyUp); 
+
+setup();
+
+var rotate = false;
+
+var rotateless = false;
+
+var rotatemore = false;
+
+var selected;
+
+var time;
+
+var showingTexture;
+
+var textures;
+
+var counter = 0;
+
+function setup() {
+  	
+  var title = new PIXI.Text("Tangram", { font: "50px Arial", fill: "white"});
+  title.position.set(150,30);
+  stage.addChild(title);
+  //Initialize the game sprites, set the game `state` to `play`
+  //and start the 'gameLoop'
+
+   var texture1 = PIXI.Texture.fromImage("../../res/creativity/1.png");
+   var texture2 = PIXI.Texture.fromImage("../../res/creativity/2.png");
+   var texture3 = PIXI.Texture.fromImage("../../res/creativity/3.png");
+   var texture4 = PIXI.Texture.fromImage("../../res/creativity/4.png");
+   textures = new Array(texture1,texture2,texture3,texture4);
+
+   var holderTexture = PIXI.Texture.fromImage("../../res/creativity/imgHolder.png");
+   var showingHolderTexture = PIXI.Texture.fromImage("../../res/creativity/showingHolderTexture.png");
+
+   var resetBtn = new PIXI.Sprite(PIXI.Texture.fromImage("../../res/creativity/reset.png"));
+   resetBtn.interactive = true;
+   resetBtn.width = 55;
+   resetBtn.height = 30;
+   resetBtn.x = 230;
+   resetBtn.y = 420;
+   stage.addChild(resetBtn);
+
+   var showBtn = new PIXI.Sprite(PIXI.Texture.fromImage("../../res/creativity/show.png"));
+   showBtn.interactive = true;
+   showBtn.width = 55;
+   showBtn.height = 30;
+   showBtn.x = 260;
+   showBtn.y = 640;
+   stage.addChild(showBtn);
+
+   var startBtn = new PIXI.Sprite(PIXI.Texture.fromImage("../../res/creativity/start.png"));
+   startBtn.interactive = true;
+   startBtn.width = 55;
+   startBtn.height = 30;
+   startBtn.x = 200;
+   startBtn.y = 640;
+   stage.addChild(startBtn);
+  
+   var imgHolder = new PIXI.Sprite(holderTexture);
+   imgHolder.x = 170;
+   imgHolder.y = 460;
+   imgHolder.width = 175;
+   imgHolder.height = 175;
+   stage.addChild(imgHolder);
+
+
+
+  var board = new PIXI.Graphics();
+  board.beginFill(0xffffff);
+  board.drawRect(100, 100, 320, 320);
+  board.endFill();
+  stage.addChild(board);
+
+  var t1container = new PIXI.Container();
+  var t1 = new PIXI.Graphics();
+  t1.beginFill(0xED7CBD);
+  t1.drawPolygon([100,100, 180,180, 260,100]);
+  t1.endFill();
+  t1.pivot.set(180,140);
+  t1container.interactive = true;
+  t1container.x = 180;
+  t1container.y = 140;
+  t1container.addChild(t1);
+  stage.addChild(t1container);
+
+
+  resetBtn.click = function(){
+  	t1.rotation = 0;
+  	t1.position.set(0,0);
+  	t2.rotation = 0;
+  	t2.position.set(0,0);
+  	t3.rotation = 0;
+  	t3.position.set(0,0);
+  	t4.rotation = 0;
+  	t4.position.set(0,0);
+  	t5.rotation = 0;
+  	t5.position.set(0,0);
+  	s1.rotation = 0;
+  	s1.position.set(0,0);
+  	d1.rotation = 0;
+  	d1.position.set(0,0);
+  	
+  }
+
+  startBtn.click = function(){
+  	clearTimeout(time);
+  	imgHolder.texture = textures[counter % 4];
+  	showingTexture = imgHolder.texture;
+  	time = setTimeout(function(sprite) {
+        // Change the texture to gooseIdle
+        imgHolder.texture = showingHolderTexture;
+    }, 8000, this);
+    counter++;
+  }
+
+  showBtn.click = function(){
+  	clearTimeout(time);
+  	imgHolder.texture = showingTexture;
+  	time = setTimeout(function(sprite) {
+        // Change the texture to gooseIdle
+        imgHolder.texture = showingHolderTexture;
+    }, 3000, this);
+  }
+ 
+
+  var t2container = new PIXI.Container();
+  var t2 = new PIXI.Graphics();
+  t2.beginFill(0xEDF600);
+  t2.drawPolygon([340,180, 260,260, 340,340]);
+  t2.endFill();
+  t2.pivot.set(300,260);
+
+  t2container.interactive = true;
+  t2container.x = 300;
+  t2container.y = 260;
+  t2container.addChild(t2);
+  stage.addChild(t2container);
+
+  var t3container = new PIXI.Container();
+  var t3 = new PIXI.Graphics();
+  t3.beginFill(0xF7C003);
+  t3.drawPolygon([260,100, 420,100, 420,260]);
+  t3.endFill();
+  t3.pivot.set(360,160);
+
+  t3container.interactive = true;
+  t3container.x = 360;
+  t3container.y = 160;
+  t3container.addChild(t3);
+  stage.addChild(t3container);
+
+  var t4container = new PIXI.Container();
+  var t4 = new PIXI.Graphics();
+  t4.beginFill(0xBEE87A);
+  t4.drawPolygon([100,100, 260,260, 100,420]);
+  t4.endFill();
+  t4.pivot.set(160,260);
+
+  t4container.interactive = true;
+  t4container.x = 160;
+  t4container.y = 260;
+  t4container.addChild(t4);
+  stage.addChild(t4container);
+
+  var t5container = new PIXI.Container();
+  var t5 = new PIXI.Graphics();
+  t5.beginFill(0x55B3C9);
+  t5.drawPolygon([260,260, 100,420, 420,420]);
+  t5.endFill();
+  t5.pivot.set(260,360);
+ 
+  t5container.interactive = true;
+  t5container.x = 260;
+  t5container.y = 360;
+  t5container.addChild(t5);
+  stage.addChild(t5container);
+
+
+  var s1container = new PIXI.Container();
+  var s1 = new PIXI.Graphics();
+  s1.beginFill(0x9680B6);
+  s1.drawPolygon([260,100, 180,180, 260,260, 340, 180]);
+  s1.endFill();
+  s1.pivot.set(260,180);
+
+  s1container.interactive = true;
+  s1container.x = 260;
+  s1container.y = 180;
+  s1container.addChild(s1);
+  stage.addChild(s1container);
+
+  var d1container = new PIXI.Container();
+  var d1 = new PIXI.Graphics();
+  d1.beginFill(0xEB1F4C);
+  d1.drawPolygon([340, 180, 340,340, 420,420, 420,260]);
+  d1.endFill();
+  d1.pivot.set(380,300);
+  
+  d1container.interactive = true;
+  d1container.x = 380;
+  d1container.y = 300;
+  d1container.addChild(d1);
+  stage.addChild(d1container);
+
+
+  t1.interactive = true;
+  t2.interactive = true;
+  t3.interactive = true;
+  t4.interactive = true;
+  t5.interactive = true;
+  s1.interactive = true;
+  d1.interactive = true;
+
+
+  t1
+    .on('mousedown', onDragStart)
+    .on('touchstart', onDragStart)
+    .on('mouseup', onDragEnd)
+    .on('mouseupoutside', onDragEnd)
+    .on('touchend', onDragEnd)
+    .on('touchendoutside', onDragEnd)
+    .on('mousemove', onDragMove)
+    .on('touchmove', onDragMove);
+	
+	t1.on('click', selectFunc);
+
+  t2
+    .on('mousedown', onDragStart)
+    .on('touchstart', onDragStart)
+    .on('mouseup', onDragEnd)
+    .on('mouseupoutside', onDragEnd)
+    .on('touchend', onDragEnd)
+    .on('touchendoutside', onDragEnd)
+    .on('mousemove', onDragMove)
+    .on('touchmove', onDragMove);
+	
+	t2.on('click', selectFunc);
+
+  t3
+    .on('mousedown', onDragStart)
+    .on('touchstart', onDragStart)
+    .on('mouseup', onDragEnd)
+    .on('mouseupoutside', onDragEnd)
+    .on('touchend', onDragEnd)
+    .on('touchendoutside', onDragEnd)
+    .on('mousemove', onDragMove)
+    .on('touchmove', onDragMove);
+	
+	t3.on('click', selectFunc);
+  
+  t4
+    .on('mousedown', onDragStart)
+    .on('touchstart', onDragStart)
+    .on('mouseup', onDragEnd)
+    .on('mouseupoutside', onDragEnd)
+    .on('touchend', onDragEnd)
+    .on('touchendoutside', onDragEnd)
+    .on('mousemove', onDragMove)
+    .on('touchmove', onDragMove);
+	
+	t4.on('click', selectFunc);
+  
+  t5
+    .on('mousedown', onDragStart)
+    .on('touchstart', onDragStart)
+    .on('mouseup', onDragEnd)
+    .on('mouseupoutside', onDragEnd)
+    .on('touchend', onDragEnd)
+    .on('touchendoutside', onDragEnd)
+    .on('mousemove', onDragMove)
+    .on('touchmove', onDragMove);
+	
+	t5.on('click', selectFunc);
+  
+  s1
+    .on('mousedown', onDragStart)
+    .on('touchstart', onDragStart)
+    .on('mouseup', onDragEnd)
+    .on('mouseupoutside', onDragEnd)
+    .on('touchend', onDragEnd)
+    .on('touchendoutside', onDragEnd)
+    .on('mousemove', onDragMove)
+    .on('touchmove', onDragMove);
+	
+	s1.on('click', selectFunc);
+  
+  d1
+    .on('mousedown', onDragStart)
+    .on('touchstart', onDragStart)
+    .on('mouseup', onDragEnd)
+    .on('mouseupoutside', onDragEnd)
+    .on('touchend', onDragEnd)
+    .on('touchendoutside', onDragEnd)
+    .on('mousemove', onDragMove)
+    .on('touchmove', onDragMove);
+	
+	d1.on('click', selectFunc);
+
+
+    play();
+
+}
+
+function gameLoop() {
+  //Runs the current game `state` in a loop and renders the sprites
+
+  if(rotate) {
+	selected.rotation += 0.001;
+  }
+
+  if(rotateless) {
+  	selected.rotation += 0.01;
+  }
+
+  if(rotatemore) {
+  	selected.rotation += 0.05;
+  }
+
+
+
+  //Loop this function 60 times per second
+  requestAnimationFrame(gameLoop);
+
+  //Render the stage
+  renderer.render(stage);
+}
+
+function play() {
+  //All the game logic goes here
+
+  gameLoop();
+}
+
+function end() {
+  //All the code that should run at the end of the game
+}
+
+
+//////////////////////////////////////////////////////////////////helper functions
+function onDragStart(event)
+{
+    // store a reference to the data
+    // the reason for this is because of multitouch
+    // we want to track the movement of this particular touch
+    this.data = event.data;
+    this.alpha = 0.8;
+    this.dragging = true;
+}
+
+function onDragEnd()
+{
+    this.alpha = 1;
+
+    this.dragging = false;
+
+    // set the interaction data to null
+    this.data = null;
+}
+
+function onDragMove()
+{
+    if (this.dragging)
+    {
+        var newPosition = this.data.getLocalPosition(this.parent);
+        this.position.x = newPosition.x;
+        this.position.y = newPosition.y;
+    }
+}
+
+
+
+function selectFunc(event) {
+	selected = this;
+}
+
+
+function onKeyDown(key){
+
+ 	if (key.keyCode === 84) {
+ 		rotate = true;
+ 	}
+
+ 	if(key.keyCode === 82) {
+ 		rotateless = true;
+ 	}
+
+ 	if(key.keyCode === 69) {
+ 		rotatemore = true;
+ 	}
+
+
+}
+
+function onKeyUp(key) {
+
+	if (key.keyCode === 84) {
+ 		rotate = false;
+ 	}
+
+ 	if(key.keyCode === 82) {
+ 		rotateless = false;
+ 	}
+
+ 	if(key.keyCode === 69) {
+ 		rotatemore = false;
+ 	}
+}
+
+
+function drawTemplate() {
+
+}
+
+
+</script>
+</body>
+</html>
