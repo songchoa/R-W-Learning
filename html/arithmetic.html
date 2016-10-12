@@ -7,7 +7,28 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
+    .custom {
+    	height: 60px; 
+    	text-align: center;
+    	color: gold;
+    	background-color: gold;
+    	border: 2px solid green;
+    }
 
+    p {
+    	font-size: 20px;
+    	font-weight: bold;
+    }
+
+    #stopwatch {
+    	font-size: 50px;
+    }
+
+    #start {
+    	font-size: 20px;
+    	margin-top: 15px;
+    }
+ 
     </style>
 </head>
 <body>
@@ -21,41 +42,353 @@
     	</ul>
 	</div>
 
+	<!-- 1 -->
 	<div class="row">
-		<div class="col-md-4">
-			<div class="well" style="text-align: center;color: gold;background-color: gold; border: 2px solid green">
-				3 + 9 = 
+		<div class="col-md-3" >
+			<div class="well custom" id="a1">
+				<p>36 + 17 =</p> 
 			</div>
 		</div>
 
-		<div class="col-md-4">
-			<div class="well" style="text-align: center;color: gold;background-color: gold; border: 2px solid green">
-				12
+		<div class="col-md-3">
+			<div class="well custom" id="a2">
+				<p>55 + 26</p>
 			</div>
 		</div>
 
-		<div class="col-md-4">
-			<div class="well" style="text-align: center;color: gold;background-color: gold; border: 2px solid green">
-				15
+		<div class="col-md-3">
+			<div class="well custom" id="a3">
+				<p>53</p>
+			</div>
+		</div>
+
+		<div class="col-md-3">
+			<div class="well custom" id="a4">
+				<p>81</p>
 			</div>
 		</div>
 	</div>
 
+	<!-- 2 -->
+	<div class="row">
+		<div class="col-md-3" >
+			<div class="well custom" id="b1">
+				<p>1 + 11 =</p> 
+			</div>
+		</div>
+
+		<div class="col-md-3">
+			<div class="well custom" id="b2">
+				<p>12</p>
+			</div>
+		</div>
+
+		<div class="col-md-3">
+			<div class="well custom" id="b3">
+				<p>15</p>
+			</div>
+		</div>
+
+		<div class="col-md-3">
+			<div class="well custom" id="b4">
+				<p>3 x 5</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- 3 -->
+	<div class="row">
+		<div class="col-md-3" >
+			<div class="well custom" id="c1">
+				<p>1 + 11 =</p> 
+			</div>
+		</div>
+
+		<div class="col-md-3">
+			<div class="well custom" id="c2">
+				<p>12</p>
+			</div>
+		</div>
+
+		<div class="col-md-3">
+			<div class="well custom" id="c3">
+				<p>15</p>
+			</div>
+		</div>
+
+		<div class="col-md-3">
+			<div class="well custom" id="c4">
+				<p>3 x 5</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- 4 -->
+	<div class="row">
+		<div class="col-md-3" >
+			<div class="well custom" id="d1">
+				<p>1 + 11 =</p> 
+			</div>
+		</div>
+
+		<div class="col-md-3">
+			<div class="well custom" id="d2">
+				<p>12</p>
+			</div>
+		</div>
+
+		<div class="col-md-3">
+			<div class="well custom" id="d3">
+				<p>15</p>
+			</div>
+		</div>
+
+		<div class="col-md-3">
+			<div class="well custom" id="d4">
+				<p>3 x 5</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- 5 -->
+	<div class="row">
+		<div class="col-md-3" >
+			<div class="well custom" id="e1">
+				<p>1 + 11 =</p> 
+			</div>
+		</div>
+
+		<div class="col-md-3">
+			<div class="well custom" id="e2">
+				<p>12</p>
+			</div>
+		</div>
+
+		<div class="col-md-3">
+			<div class="well custom" id="e3">
+				<p>15</p>
+			</div>
+		</div>
+
+		<div class="col-md-3">
+			<div class="well custom" id="e4">
+				<p>3 x 5</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- 5 -->
+	<div class="row">
+		<div class="col-md-3" >
+			<div class="well custom" id="f1">
+				<p>1 + 11 =</p> 
+			</div>
+		</div>
+
+		<div class="col-md-3">
+			<div class="well custom" id="f2">
+				<p>12</p>
+			</div>
+		</div>
+
+		<div class="col-md-3">
+			<div class="well custom" id="f3">
+				<p>15</p>
+			</div>
+		</div>
+
+		<div class="col-md-3">
+			<div class="well custom" id="f4">
+				<p>3 x 5</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-6">
+			<div class="col-md-8"></div>
+			<div class="col-md-4">
+				<div id="stopwatch">
+					0.000
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-6">
+			<button id="start" type="button" class="btn btn-primary">START</button>
+		</div>
+	</div>
+
 	<script>
-		var select;
+	
+	// stopwatch reference
+	// author: maček 
+	// link: http://stackoverflow.com/questions/20318822/how-to-create-a-stopwatch-using-javascript
 
+	var interval, offset, clock,timer;
+
+	timer = document.getElementById("stopwatch");
+
+	$("#start").click(function(){
+		reset();
+		resetWell();
+		start();
+	});
+
+	function start() {
+	    if (!interval) {
+	      offset   = Date.now();
+	      interval = setInterval(update);
+	    }
+	  }
+  
+	  function stop() {
+	    if (interval) {
+	      clearInterval(interval);
+	      interval = null;
+	    }
+	  }
+	  
+	  function reset() {
+	    clock = 0;
+	    render(0);
+	  }
+	  
+	  function update() {
+	    clock += delta();
+	    render();
+	  }
+	  
+	  function render() {
+	    timer.innerHTML = clock/1000; 
+	  }
+	  
+	  function delta() {
+	    var now = Date.now(),
+	        d   = now - offset;
+	    
+	    offset = now;
+	    return d;
+	  }
+
+
+	  function resetWell(){
+	  	$(".well").css("background-color","gold");
+	  	$(".well").css("color","gold");
+	  	$(".well").css("pointer-events","auto");
+	  }
+
+	$(document).ready(function(){
+		
+		var ids = [];
+		var counter = 0;
 		$(".well").click(function() {
-			//alert("clicked");
-			select = this;
-			$(this).css("color","green").delay(1000).fadeOut();
 
+			var id = $(this).attr("id");
+			//var id = $(this).find("p");
+			ids.push(id);
+			$(this).find("p").show().css("color","green");
+			$(this).find("p").show().delay(1000).fadeOut();
+			
+
+			if(ids.length == 2) {
+				var first = document.getElementById(ids.pop());
+				var second = document.getElementById(ids.pop());
+				var fisrt_text = first.childNodes[1].innerHTML;
+				var second_text = second.childNodes[1].innerHTML;
+
+				var result = evaluate(fisrt_text,second_text);
+
+				if(result) {
+					counter++;
+					first.style.backgroundColor="white";
+					first.style.color="green";
+					first.style.pointerEvents = "none";
+					first.innerHTML = fisrt_text;
+
+					second.style.backgroundColor="white";
+					second.style.color="green";
+					second.style.pointerEvents = "none";
+					second.innerHTML = second_text;
+				}
+				
+				if(counter == 12) {
+					stop();
+				}
+			}
+
+
+			
 		});
 
+		function evaluate(left,right){
+			var left_arr = left.split(" "); 
+			var right_arr = right.split(" "); 
 
-// 		var explode = function(){
-//   alert("Boom!");
-// };
-// setTimeout(explode, 2000);
+			if(left_arr.length == right_arr.length) {
+				return false;
+			}
+
+			if(left_arr.length > 1) {
+				var op = left_arr[1];          // operator 
+				var f = parseInt(left_arr[0]); // first operand
+				var s = parseInt(left_arr[2]); // second operand
+				var r = parseInt(right_arr[0]); //result
+				if(op === "+"){
+					if(f + s != r) {
+						return false;
+					}
+				}
+				if(op === "-"){
+					if(f - s != r) {
+						return false;
+					}
+				}
+				if(op === "x"){
+					if(f * s != r) {
+						return false;
+					}
+				}
+				if(op === "/"){
+					if(f / s != r) {
+						return false;
+					}
+				}
+
+			}
+
+			if(right_arr.length > 1) {
+				var op = right_arr[1];          // operator 
+				var f = parseInt(right_arr[0]); // first operand
+				var s = parseInt(right_arr[2]); // second operand
+				var r = parseInt(left_arr[0]); //result
+				if(op === "+"){
+					if(f + s != r) {
+						return false;
+					}
+				}
+				if(op === "-"){
+					if(f - s != r) {
+						return false;
+					}
+				}
+				if(op === "x"){
+					if(f * s != r) {
+						return false;
+					}
+				}
+				if(op === "/"){
+					if(f / s != r) {
+						return false;
+					}
+				}
+			}	
+
+			return true;
+		}
+	});
+		
+
 	</script>
 </body>
 </html>
