@@ -142,6 +142,7 @@ function playerAnswer(){
 		score++;
 		placeWord();
 		document.getElementById("userIn").text = "";
+		document.getElementById("userIn").value = "";
 		//timer = setInterval(,1000);
 	}
 }
@@ -217,4 +218,30 @@ function updateGameArea(){
  	sBoard.update();
  	myGamePiece.update();
  	wordType.update();
+}
+
+function showInst(){
+	Write.run();
+	if(gameInt === undefined){
+	}
+ 	else{
+ 		clearInterval(gameInt);
+ 		clearInterval(tileLife);
+ 	}
+ 	Write.clear();
+	ctx = Write.context;
+	ctx.drawImage(backIMG, -20, -20);
+	ctx.fillStyle = "tan";
+	ctx.fillRect(40,40,400,350);
+	ctx.fillStyle = "black";
+	ctx.font = "60px Arial";
+	ctx.fillText("Instructions", 45,95);
+	ctx.font = "25px Arial";
+	ctx.fillText("Goal: Type as many correct words", 45, 130);
+	ctx.fillText("as possible before loosing",45, 170);
+	ctx.fillText("Winning/Loosing: You loose when", 45, 210);
+	ctx.fillText("the tile you are on runs out of", 45, 250);
+	ctx.fillText("time or when you run out of tiles",45, 290);
+	ctx.fillText("to jump to.", 45,330);
+
 }
