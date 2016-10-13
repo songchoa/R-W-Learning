@@ -1,18 +1,179 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
+
 <head>
-	<title>Reading</title>
-	<link rel="stylesheet" type="text/css" href="../css/mainStyle.css">
+<!---->
+<title>Reading</title>
+
+<link rel="stylesheet" type="text/css" href="../css/jquery.pagepiling.css" />
+<link rel="stylesheet" type="text/css" href="../css/reading.css">
+
+
+
+
+<script src="../javascript/jquery-3.1.1.min.js"></script>
+<script src="../javascript/reading.parallax.js"></script>
+<script type="text/javascript" src="../javascript/reading.pagepiling.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script type="text/javascript">
+		var deleteLog = false;
+
+		$(document).ready(function() {
+	    	$('#pagepiling').pagepiling({
+	    		menu: '#menu',
+	    		anchors: ['page1', 'page2', 'page3'],
+	    		navigation: {
+		            'textColor': '#f2f2f2',
+		            'bulletsColor': '#ccc',
+		            'position': 'right',
+		            'tooltips': ['Page 1', 'Page 2', 'Page 3']
+		        }
+			});
+	    });
+ </script>
+ <style>
+    /* Style for our header texts
+	* --------------------------------------- */
+	h1{
+		font-size: 5em;
+		font-family: arial,helvetica;
+		color: #fff;
+		margin:0;
+		padding:0;
+	}
+
+	/* Centered texts in each section
+	* --------------------------------------- */
+	.section{
+		text-align:center;
+	}
+
+
+	/* Backgrounds will cover all the section
+	* --------------------------------------- */
+	#section1,
+	#section2,
+	#section3{
+		background-size: cover;
+	}
+
+	/* Defining each section background and styles
+	* --------------------------------------- */
+	#section1{
+		background-image: url(../res/bg1.jpg);
+	}
+	#section2{
+		background-image: url(../res/bg2.jpg);
+		padding: 6% 0 0 0;
+	}
+	#section3{
+		background-image: url(../res/bg3.jpg);
+		padding: 6% 0 0 0;
+	}
+	#section3 h1{
+		color: #000;
+	}
+
+
+
+	#section1 h1{
+		position: absolute;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		top: 30px;
+		color: #fff;
+	}
+
+	#section2 .intro{
+		position: absolute;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		top: 30px;
+	}
+	#section2 h1,
+	#section2 p{
+		text-shadow: 1px 5px 20px #000;
+	}
+
+	#section3 h1,
+	#section3 p{
+		text-shadow: 1px 5px 20px #000;
+		color: #fff;
+	}
+
+	#infoMenu li a{
+			color: #fff;
+	}
+    </style>
 </head>
+
 <body>
-	<div>
-		<a href="../index.html"><img src="../res/logo-small.png" width="200px" height="70px"></img></a>
-		<ul>
-    		<li><a href="reading.html">Coding</a></li>
-    		<li><a href="writing.html">Writing</a></li>
-    		<li><a href="arithmetic.html">Arithmetic</a></li>
-    		<li><a href="coding.html">Reading</a></li>
-    	</ul>
+<div class="foo"></div>
+<div class="bar" data-move-x="-200px" data></div>
+
+
+
+</div>
+
+
+
+<ul id="menu">
+		<li data-menuanchor="page1" class="active"><a href="#page1">Page 1</a></li>
+		<li data-menuanchor="page2"><a href="#page2">Page 2</a></li>
+		<li data-menuanchor="page3"><a href="#page3">Page 3</a></li>
+		<a href="../index.html">
+		<img src="../res/return.png"  width="2%" alt="back to the home page" ></a>
+	</ul>
+
+	<div id="pagepiling">
+	    <div class="section" id="section1">
+	    	<h1>Long long ago, there is a young clownfish. His name is Nemo.</h1>
+	<div id="container" class="container">
+		<ul id="scene1" class="scene1">
+			
+			<li class="layer" data-depth="0.80"><img src="../res/reading1.png" height="30%" width="30%"></li>
+			<li class="layer" data-depth="0.60"><img src="../res/reading2.png" height="50%" width="50%"></li>
+			<li class="layer" data-depth="0.30"><img src="../res/reading3.png" height="60%" width="60%"></li>
+
+		</ul>
 	</div>
+	    </div>
+	    <div class="section" id="section2">
+	    	<div class="intro">
+	    		<h1>One day, Nemo and his firend Dory hung out.</h1>
+		<div id="container" class="container">
+	    	<ul id="scene2" class="scene2">
+			
+			<li class="layer" data-depth="0.10"><img src="../res/reading6.png" height="30%" width="30%"></li>
+			<li class="layer" data-depth="0.60"><img src="../res/reading4.png" height="50%" width="50%"></li>
+			<li class="layer" data-depth="0.80"><img src="../res/reading5.png" height="40%" width="40%"></li>
+
+		</ul>
+		</div>
+	    	</div>
+	    </div>
+	    <div class="section" id="section3" ng-app="">
+	    	<div class="intro">
+	    		<h1>Now, find out where Nemo is.</h1>
+				<img src="../res/reading7.png" ng-style="myStyle"
+				ng-mouseover="myStyle={width:'40%'}"
+				ng-mouseleave="myStyle={width:'30%'}"
+				ng-show ="s1"
+				ng-init="s1=true;s2=false;myStyle={width:'30%'}"
+				ng-click = "s1=false;s2=true"
+				>
+				<h1 ng-show ="s2">Yes, Nemo is in the shark's stomach.</h1>
+	    		<img src="../res/reading4.png" height="30%" width="30%"
+				ng-show ="s2"
+				>
+	    	</div>
+	    </div>
+	</div>
+	<script>
+	$('#scene1').parallax();
+	$('#scene2').parallax();
+	</script>
 </body>
 </html>
